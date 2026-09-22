@@ -268,7 +268,7 @@ jobs:
           cat budget-report.json >> $GITHUB_STEP_SUMMARY
       - name: Upload Tier B report
         if: ${{ env.STELLAR_TESTNET_SECRET != '' }}
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: budget-report-${{ github.sha }}
           path: budget-report.json
@@ -406,7 +406,7 @@ jobs:
       - name: Ping accensa-app to re-check parity
         # When this repo's vectors change, tell accensa-app's parity job to run
         # so a stale SDK copy is caught promptly rather than only on its schedule.
-        uses: peter-evans/repository-dispatch@v3
+        uses: peter-evans/repository-dispatch@v4
         continue-on-error: true
         with:
           token: ${{ secrets.ACCELSA_APP_PAT }}
